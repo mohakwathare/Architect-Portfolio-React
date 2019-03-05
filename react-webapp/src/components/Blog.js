@@ -31,7 +31,7 @@ class Blog extends Component {
       this.setState({
         totalItems : this.state.blogDetails.length
       });
-      this.fillInitialPage();
+      fillInitialPage();
       if (this.state.totalItems > 3) {
         this.setState({
           noNext : false
@@ -89,7 +89,7 @@ class Blog extends Component {
 
   const clickNext = () => {
     this.setState({
-      currentPage : this.removeElementsFromList(this.state.currentPage)
+      currentPage : removeElementsFromList(this.state.currentPage)
     });
     let i = this.state.lastIndex + 1 
     for (; i <= this.state.lastIndex + 4 && i < this.state.totalItems ; i++) {
