@@ -2,10 +2,10 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import Home from '../components/Home';
-import Blog from '../components/Blog';
-import Skills from '../components/Skills';
-import Portfolio from '../components/Portfolio';
+import Home from '../components/Home/Home';
+import Blog from '../components/Blog/Blog';
+import Skills from '../components/Skills/Skills';
+import Portfolio from '../components/Portfolio/Portfolio';
 
 const Routes = () => (
 	<BrowserRouter>

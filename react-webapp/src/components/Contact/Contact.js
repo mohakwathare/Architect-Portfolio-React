@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-const contact = () => {
-
-  render() {
+const contact = props => {
     return (
         <div id="contact" className="text-center">
           <div className="overlay">
@@ -39,7 +37,6 @@ const contact = () => {
           </div>
         </div>
     );
-  }
 }
 
 export default contact;

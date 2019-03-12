@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Pager} from 'react-bootstrap';
 
 class Blog extends Component {
 
@@ -31,7 +30,7 @@ class Blog extends Component {
       this.setState({
         totalItems : this.state.blogDetails.length
       });
-      fillInitialPage();
+      this.fillInitialPage();
       if (this.state.totalItems > 3) {
         this.setState({
           noNext : false
@@ -45,8 +44,8 @@ class Blog extends Component {
     })
   }
 
-  const fillInitialPage = () => {
-    let i = 0 
+  fillInitialPage = () => {
+    let i = 0;
     for (; i <= this.state.lastIndex + 3 && i < this.state.totalItems ; i++) {
       if (i === this.state.totalItems - 1) {
         this.setState({
@@ -58,16 +57,16 @@ class Blog extends Component {
     this.setState({
       lastIndex : (i - 1)
     });
-  }
+  };
 
-  const removeElementsFromList = (list) => {
+  removeElementsFromList = (list) => {
     for (let i = 0 ; i < 4 ; i++) {
       list.pop();
     }
     return list;
   }
 
-  const clickPrevious = () => {
+  clickPrevious = () => {
     this.setState({
       currentPage : this.removeElementsFromList(this.state.currentPage)
     });
@@ -87,9 +86,9 @@ class Blog extends Component {
 
   }
 
-  const clickNext = () => {
+  clickNext = () => {
     this.setState({
-      currentPage : removeElementsFromList(this.state.currentPage)
+      currentPage : this.removeElementsFromList(this.state.currentPage)
     });
     let i = this.state.lastIndex + 1 
     for (; i <= this.state.lastIndex + 4 && i < this.state.totalItems ; i++) {
@@ -106,7 +105,7 @@ class Blog extends Component {
     });
   }
 
-  const onClickPoem = (poem) => {
+  onClickPoem = (poem) => {
     console.log(poem.name + poem.date);
     this.setState({
       currPoemTitle : poem.name,
@@ -145,10 +144,7 @@ class Blog extends Component {
                 )}
               </div>
             </div>
-            <Pager>
-              <Pager.Item href="#" disabled={this.state.noPrevious} onClick={this.clickPrevious}>Previous</Pager.Item>{' '}
-              <Pager.Item href="#" disabled={this.state.noNext} onClick={this.clickNext}>Next</Pager.Item>
-            </Pager>;
+            
           </div>
           <div id="poem" hidden={this.state.isPoemHidden}>
             <div className="container">
