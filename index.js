@@ -16,7 +16,7 @@ app.listen(2000, () => {
 });
 
 app.get('/getAboutMeSection', (req, res) => {
-	fs.readFile('./react-webapp/src/components/datafiles/aboutme/aboutme.txt', function (err, data) {
+	fs.readFile('./webapp/src/Components/datafiles/aboutme/aboutme.txt', function (err, data) {
 		if (err) {
 			return console.error(err);
 		}
@@ -37,7 +37,7 @@ var retrieveFileDetails = (dirPath, result) => {
 	var poem = {
 		name : '',
 		date : '',
-		content : '',
+		content : [],
 		image : ''
 	};
 	var files = fs.readdirSync(dirPath);
@@ -63,15 +63,14 @@ var retrieveFileDetails = (dirPath, result) => {
 				var firstLine = true;
 				var data = fs.readFileSync(path);
 				splitData = sl(data.toString(),{preserveNewlines : true});
-				splitData.forEach(i => {
+				splitData.forEach(line => {
 					if (firstLine) {
-						poem.date = i.slice(0, -1);
+						poem.date = line.slice(0, -1);
 						firstLine = false;
 					} else {
-						poem.content = poem.content + i;
+						poem.content.push(line);
 					}
 				})
-
 			}
 		}
 	});
@@ -80,14 +79,14 @@ var retrieveFileDetails = (dirPath, result) => {
 
 app.get('/getBlogDetails', (req, res) => {
 	var result = [];
-	var resu = retrieveFileDetails('./react-webapp/src/components/datafiles/blog/', result);
+	var resu = retrieveFileDetails('./webapp/src/Components/Blog/blog/', result);
 	result = resu.result;
 	return res.send(result);
 });
 
 app.get('/getSkillsDetails', (req, res) => {
 	var skills = [];
-	fs.readFile('./react-webapp/src/components/datafiles/skills/skills.txt', function (err, data) {
+	fs.readFile('./webapp/src/Components/datafiles/skills/skills.txt', function (err, data) {
 		if (err) {
 			return console.error(err);
 		}

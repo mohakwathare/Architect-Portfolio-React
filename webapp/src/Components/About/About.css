@@ -1,0 +1,38 @@
+.about {
+  padding: 100px 0;
+  background: #f6f6f6;
+}
+.about .abouttext {
+  margin-left: 10px;
+}
+.about img {
+  float: right;
+}
+.about p {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.sectiontitle .center {
+  padding: 25px 0 45px 0;
+}
+@media (max-width: 1024px) {
+  #about img {
+    float: left;
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
