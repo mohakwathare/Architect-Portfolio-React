@@ -7,7 +7,7 @@ var fs = require('fs');
 var sl = require('split-lines');
 var nodemailer = require('nodemailer');
 var path = require('path');
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 5000;
 
 var app = express();
 // Implementing type in request body as json.
@@ -16,16 +16,8 @@ app.use(cors());
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'webapp/build')))
-// Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/webapp/build/index.html'))
-})
 
-app.listen(PORT, () => {
-	console.log('Server is running amazingly on port 2000');
-});
-
-app.get('/getAboutMeSection', (req, res) => {
+app.get('/api/getAboutMeSection', (req, res) => {
 	fs.readFile('./webapp/src/datafiles/aboutme/aboutme.txt', function (err, data) {
 		if (err) {
 			return console.error(err);
@@ -111,14 +103,14 @@ var sendEmailToOwner = (req) => {
 	return info.messageId;
 }
 
-app.get('/getBlogDetails', (req, res) => {
+app.get('/api/getBlogDetails', (req, res) => {
 	var result = [];
 	var resu = retrieveFileDetails('./webapp/src/Components/Blog/blog/', result);
 	result = resu.result;
 	return res.send(result);
 });
 
-app.get('/getSkillsDetails', (req, res) => {
+app.get('/api/getSkillsDetails', (req, res) => {
 	var skills = [];
 	fs.readFile('./webapp/src/datafiles/skills/skills.txt', function (err, data) {
 		if (err) {
@@ -139,14 +131,23 @@ app.get('/getSkillsDetails', (req, res) => {
 });
 
 
-app.get('/getArtworks', (req, res) => {
+app.get('/api/getArtworks', (req, res) => {
 	var result = [];
 	var resu = retrieveFileDetails('./webapp/src/Components/Art/artworks/', result);
 	result = resu.result;
 	return res.send(result);
 });
 
-app.post('/sendEmail', (req, res) => {
+app.post('/api/sendEmail', (req, res) => {
 	var result = sendEmailToOwner(req);
 	return res.send(result);
+});
+
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/webapp/build/index.html'))
+})
+
+app.listen(PORT, () => {
+	console.log('Server is running amazingly on port 5000');
 });

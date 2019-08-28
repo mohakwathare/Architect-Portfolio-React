@@ -1,0 +1,135 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: #666;
+  width: 100% !important;
+  height: 100% !important;
+}
+header{
+  display: block;
+}
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+h1 {
+  font-weight: 700;
+}
+h1 strong {
+  font-weight: 900;
+}
+h2 {
+  line-height: 20px;
+  margin: 0;
+  color: #444;
+  font-weight: 400;
+  margin-bottom: 30px;
+  font-size: 34px;
+  text-transform: uppercase;
+}
+h4 {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+h5 {
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 20px;
+}
+p {
+  font-size: 15px;
+}
+p.intro {
+  font-size: 16px;
+  margin: 12px 0 0;
+  line-height: 24px;
+  font-family: 'Open Sans', sans-serif;
+}
+a {
+  color: #222;
+  background-color: transparent;
+}
+a:hover, a:focus {
+  text-decoration: none;
+  color: #526cbb;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+ul, ol {
+  list-style: none;
+  padding: 0;
+  webkit-padding: 0;
+  moz-padding: 0;
+}
+hr {
+  height: 4px;
+  width: 70px;
+  text-align: center;
+  position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b4da8+0,4977c2+100 */
+  background: rgb(107,77,168); /* Old browsers */
+  background: -moz-linear-gradient(left, rgba(107,77,168,1) 0%, rgba(73,119,194,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(107,77,168,1) 0%, rgba(73,119,194,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(107,77,168,1) 0%, rgba(73,119,194,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b4da8', endColorstr='#4977c2', GradientType=1 ); /* IE6-9 */
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border: 0;
+}
+h1 {
+  margin: .67em 0;
+  font-size: 2em;
+}
+.textcenter {
+  text-align: center;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.center {
+  padding: 25px 0 45px 0;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.imgresponsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
