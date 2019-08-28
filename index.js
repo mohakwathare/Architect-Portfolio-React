@@ -13,7 +13,13 @@ var app = express();
 // Implementing type in request body as json.
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static('public'));
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, 'webapp/build')))
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/webapp/build/index.html'))
+})
 
 app.listen(PORT, () => {
 	console.log('Server is running amazingly on port 2000');
@@ -144,10 +150,3 @@ app.post('/sendEmail', (req, res) => {
 	var result = sendEmailToOwner(req);
 	return res.send(result);
 });
-
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'webapp/build')))
-// Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/webapp/build/index.html'))
-})
