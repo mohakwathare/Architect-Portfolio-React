@@ -53,7 +53,7 @@ class Home extends Component {
 					<div className="overlay">
 						<div className="container">
 							<div className="row">
-								<div className="intro-text">
+								<div className="intro-text col-lg-12">
 								<h1>Radhika Goyal</h1>
 			                	<p>Architect  |  Artist  |  Blogger</p>
 			                	<Button variant="outlined" className={styleClasses.buttonRoot} href="#about">Learn More</Button>

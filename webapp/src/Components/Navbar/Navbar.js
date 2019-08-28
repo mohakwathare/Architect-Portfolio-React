@@ -1,6 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import {AppBar,Toolbar,Typography,Tabs,Tab} from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   	minHeight: 50,
   	minWidth: 20,
   	backgroundColor: '#222',
-    display: 'block'
   },
   tabsIndicator: {
     backgroundColor: '#1890ff',
@@ -53,18 +56,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Navbar = props => {
+const NavBar = props => {
 	const classes = useStyles();
 	return (
 		<React.Fragment>
-			<AppBar position="fixed" >
+      <AppBar position="fixed" >
 				<Toolbar className={classes.appBarRoot}>
 					<Typography variant="h6" color="inherit"> The Architalker</Typography>
-					<Tabs classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}>
+					<Tabs classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }} centered>
 						<Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} label="Home" href='/'/>
-						<Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} label="Skills" href='/skills'/>
 						<Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} label="Blog" href='/blog'/>
-						<Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} label="Portfolio" href='/portfolio'/>
 						<Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} label="Art" href='/art'/>
 					</Tabs>
 				</Toolbar>
@@ -74,4 +75,4 @@ const Navbar = props => {
 
 }
 
-export default Navbar;
+export default NavBar;

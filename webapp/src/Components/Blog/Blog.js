@@ -22,6 +22,7 @@ class Blog extends Component {
   componentDidMount() {
     axios.get('http://localhost:2000/getBlogDetails')
     .then(response => {
+      console.log(response.data)
       this.setState({
         blogDetails : response.data
       });
@@ -34,8 +35,6 @@ class Blog extends Component {
   }
 
   onClickHandlerPoem = (selectedPoem) => {
-    console.log(selectedPoem.name + selectedPoem.date);
-    console.log(selectedPoem.content);
     this.setState({
       poemClicked : true
     });
@@ -60,10 +59,7 @@ class Blog extends Component {
     const styleClasses = {
       gridList: {
         width: 500,
-        height: 450,
-      },
-      icon: {
-        color: 'rgba(255, 255, 255, 0.54)',
+        height: 500,
       },
     };
     const slash = '/';
@@ -75,7 +71,7 @@ class Blog extends Component {
             <h2>Blog</h2>
             <hr/>
           </div>
-          <GridList cellHeight={200} cols={3} spacing={25} className={styleClasses.gridList}>
+          <GridList cellHeight={200} cols={2} spacing={30} className={styleClasses.gridList}>
             {this.state.blogDetails.map((poem,key) => (
               <GridListTile key={key} className="blog-item hover-bg">
                 <img 
@@ -84,15 +80,9 @@ class Blog extends Component {
                 alt="Project Title" 
                 />
                 <GridListTileBar
-                  className="hover-text"
                   title={poem.name}
                   subtitle={poem.date}
                   onClick={() => this.onClickHandlerPoem(poem)}
-                  actionIcon={
-                    <IconButton className={styleClasses.icon}>
-                      <InfoIcon />
-                    </IconButton>
-                  }
                 />
               </GridListTile>
             ))}

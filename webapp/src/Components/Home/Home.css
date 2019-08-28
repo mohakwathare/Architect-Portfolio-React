@@ -31,6 +31,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d96b4da8', e
   margin-right: -15px;
   margin-left: -15px;
 }
+.intro-text {
+	margin:0px auto;
+}
 @media(min-width:768px) {
 .intro {
 	height: 100%;

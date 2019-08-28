@@ -40,7 +40,7 @@ h2 {
   font-size: 34px;
   text-transform: uppercase;
 }
-h3, h4 {
+h4 {
   color: #333;
   font-size: 20px;
   font-weight: 600;
@@ -116,6 +116,7 @@ h1 {
   display: block;
   max-width: 100%;
   height: auto;
+  margin-top: 20px;
 }
 @media (min-width: 768px) {
   .container {

@@ -7,6 +7,8 @@
 }
 .about img {
   float: right;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .about p {
   margin-top: 20px;
@@ -14,25 +16,4 @@
 }
 .sectiontitle .center {
   padding: 25px 0 45px 0;
-}
-@media (max-width: 1024px) {
-  #about img {
-    float: left;
-    margin-bottom: 20px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
 }

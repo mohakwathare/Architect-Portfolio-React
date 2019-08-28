@@ -5,18 +5,21 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var sl = require('split-lines');
+var nodemailer = require('nodemailer');
+const PORT = process.env.PORT || 2000;
 
 var app = express();
 // Implementing type in request body as json.
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('public'));
 
 app.listen(2000, () => {
-	console.log('CORS-enabled web server listening on port 2000');
+	console.log('Server is running amazingly on port 2000');
 });
 
 app.get('/getAboutMeSection', (req, res) => {
-	fs.readFile('./webapp/src/Components/datafiles/aboutme/aboutme.txt', function (err, data) {
+	fs.readFile('./webapp/src/datafiles/aboutme/aboutme.txt', function (err, data) {
 		if (err) {
 			return console.error(err);
 		}
@@ -34,7 +37,7 @@ var checkFileTypeDir = (path) => {
 }
 
 var retrieveFileDetails = (dirPath, result) => {
-	var poem = {
+	var poemOrArtwork = {
 		name : '',
 		date : '',
 		content : [],
@@ -53,28 +56,52 @@ var retrieveFileDetails = (dirPath, result) => {
 		} else if (fileTypeDir) {
 			var res = retrieveFileDetails(path, result);
 			result = res.result;
-			result.push(res.poem);
+			result.push(res.poemOrArtwork);
 
 		} else {
 			if (file.indexOf('img') > -1) {
-				poem.image = file;
+				poemOrArtwork.image = file;
 			} else if (file.slice(-4) === '.txt'){
-				poem.name = file.slice(0, -4);
+				poemOrArtwork.name = file.slice(0, -4);
 				var firstLine = true;
 				var data = fs.readFileSync(path);
 				splitData = sl(data.toString(),{preserveNewlines : true});
 				splitData.forEach(line => {
 					if (firstLine) {
-						poem.date = line.slice(0, -1);
+						poemOrArtwork.date = line.slice(0, -1);
 						firstLine = false;
 					} else {
-						poem.content.push(line);
+						poemOrArtwork.content.push(line);
 					}
 				})
 			}
 		}
 	});
-	return {poem : poem, result : result};
+	return {poemOrArtwork : poemOrArtwork, result : result};
+}
+
+var sendEmailToOwner = (req) => {
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+		service:'gmail',
+        auth: {
+            user: "watharemohak@gmail.com", // generated ethereal user
+            pass: "fernandotorres" // generated ethereal password
+        }
+    });
+
+    // send mail with defined transport object
+    let info = transporter.sendMail({
+        from: req.body.senderEmail, // sender address
+        to: 'watharemohak@gmail.com', // list of receivers
+        subject: 'Hello. '+ req.body.name +' wants to contact you!!', // Subject line
+        html: '<div><h2>Email:'+req.body.senderEmail+'<h2></div>'+'<div><p>'+req.body.message+'<p></div>', // plain text body
+    });
+
+    console.log('Message sent: %s', info.messageId);
+	// Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+	
+	return info.messageId;
 }
 
 app.get('/getBlogDetails', (req, res) => {
@@ -86,7 +113,7 @@ app.get('/getBlogDetails', (req, res) => {
 
 app.get('/getSkillsDetails', (req, res) => {
 	var skills = [];
-	fs.readFile('./webapp/src/Components/datafiles/skills/skills.txt', function (err, data) {
+	fs.readFile('./webapp/src/datafiles/skills/skills.txt', function (err, data) {
 		if (err) {
 			return console.error(err);
 		}
@@ -102,4 +129,17 @@ app.get('/getSkillsDetails', (req, res) => {
 		})
 		return res.send(skills);
 	});
+});
+
+
+app.get('/getArtworks', (req, res) => {
+	var result = [];
+	var resu = retrieveFileDetails('./webapp/src/Components/Art/artworks/', result);
+	result = resu.result;
+	return res.send(result);
+});
+
+app.post('/sendEmail', (req, res) => {
+	var result = sendEmailToOwner(req);
+	return res.send(result);
 });
