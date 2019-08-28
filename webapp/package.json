@@ -127,5 +127,8 @@
   "devDependencies": {
     "file-loader": "^2.0.0"
   },
+  "engines": {
+    "node": "11.10.1"
+  },
   "proxy": "http://localhost:5000"
 }

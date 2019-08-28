@@ -18,5 +18,8 @@
     "express": "^4.16.4",
     "nodemailer": "^6.3.0",
     "split-lines": "^2.0.0"
+  },
+  "engines": {
+    "node": "11.10.1"
   }
 }
