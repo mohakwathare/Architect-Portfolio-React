@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Art.css';
 import axios from 'axios';
-import Carousel from 'react-bootstrap/Carousel'
+import Carousel from 'react-bootstrap/Carousel';
 
 class Art extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class Art extends Component {
                         </div>
                     </div>
                     <div className="carousel">
-                        <Carousel fade='true' interval='5000'>
+                        <Carousel fade='true' interval='10000'>
                             {this.state.artworks.map((artwork,key) => (
                             <Carousel.Item>
                                 <img 

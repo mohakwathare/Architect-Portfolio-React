@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var sl = require('split-lines');
 var nodemailer = require('nodemailer');
+const sendmail = require('sendmail')();
 var path = require('path');
 const PORT = process.env.PORT || 5000;
 
@@ -81,7 +82,7 @@ var retrieveFileDetails = (dirPath, result) => {
 
 var sendEmailToOwner = (req) => {
     // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
+    /*let transporter = nodemailer.createTransport({
 		service:'gmail',
         auth: {
             user: "watharemohak@gmail.com", // generated ethereal user
@@ -100,7 +101,18 @@ var sendEmailToOwner = (req) => {
     console.log('Message sent: %s', info.messageId);
 	// Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 	
-	return info.messageId;
+	return info.messageId;*/
+
+	sendmail({
+		from: req.body.senderEmail,
+		to: 'watharemohak@gmail.com',
+		subject: 'Hello. '+ req.body.name +' wants to contact you!!', // Subject line
+		html: '<div><h2>Email:'+req.body.senderEmail+'<h2></div>'+'<div><p>'+req.body.message+'<p></div>', // plain text body
+	  }, function(err, reply) {
+		console.log(err && err.stack);
+		console.dir(reply);
+	});
+
 }
 
 app.get('/api/getBlogDetails', (req, res) => {

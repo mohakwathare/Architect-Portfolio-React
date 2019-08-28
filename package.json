@@ -17,6 +17,7 @@
     "eol": "^0.9.1",
     "express": "^4.16.4",
     "nodemailer": "^6.3.0",
+    "sendmail": "^1.6.1",
     "split-lines": "^2.0.0"
   },
   "engines": {
