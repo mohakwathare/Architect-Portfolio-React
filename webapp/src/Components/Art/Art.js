@@ -13,7 +13,7 @@ class Art extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:2000/getArtworks')
+        axios.get('/api/getArtworks')
         .then(response => {
         console.log(response.data)
         this.setState({

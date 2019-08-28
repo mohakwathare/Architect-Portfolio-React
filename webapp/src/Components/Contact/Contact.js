@@ -34,7 +34,7 @@ class Contact extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:2000/sendEmail', {
+    axios.post('/api/sendEmail', {
       name: this.state.name,
       senderEmail : this.state.email,
       message: this.state.comment

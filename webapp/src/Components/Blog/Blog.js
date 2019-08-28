@@ -19,7 +19,7 @@ class Blog extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:2000/getBlogDetails')
+    axios.get('/api/getBlogDetails')
     .then(response => {
       console.log(response.data)
       this.setState({

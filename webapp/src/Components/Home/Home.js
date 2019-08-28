@@ -15,7 +15,7 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-	    axios.get('http://localhost:2000/getAboutMeSection')
+	    axios.get('/api/getAboutMeSection')
 	    .then(response => {
 	      this.setState({
 	        aboutMeInfo : response.data
