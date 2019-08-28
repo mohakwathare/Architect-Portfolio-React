@@ -85,7 +85,7 @@ var sendEmailToOwner = (req) => {
 		service:'gmail',
         auth: {
             user: "watharemohak@gmail.com", // generated ethereal user
-            pass: "fernandotorres" // generated ethereal password
+            pass: "" // generated ethereal password
         }
     });
 
