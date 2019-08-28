@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var sl = require('split-lines');
 var nodemailer = require('nodemailer');
+var path = require('path');
 const PORT = process.env.PORT || 2000;
 
 var app = express();
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('public'));
 
-app.listen(2000, () => {
+app.listen(PORT, () => {
 	console.log('Server is running amazingly on port 2000');
 });
 
