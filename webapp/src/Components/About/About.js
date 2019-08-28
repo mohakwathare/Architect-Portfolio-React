@@ -1,6 +1,6 @@
 import React from 'react';
 import aboutMeImage from '../../Images/about.jpg';
-import {Button, Grid} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import './About.css';
 
 const about = props => {

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './Blog.css';
 import axios from 'axios';
-import {GridList, GridListTile, GridListTileBar, IconButton} from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import {GridList, GridListTile, GridListTileBar} from '@material-ui/core';
 import PoemPopover from '../PoemPopover/PoemPopover';
 
 class Blog extends Component {

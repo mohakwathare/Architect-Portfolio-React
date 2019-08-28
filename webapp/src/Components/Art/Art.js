@@ -45,7 +45,7 @@ class Art extends Component {
                                 <img 
                                 className="d-block w-100"
                                 src={artwork.image ? require(`${this.state.artworkImgPath}${artwork.name}${slash}${artwork.image}`) : ''}
-                                alt='Image'
+                                alt='Artwork'
                                 />
                                 <Carousel.Caption>
                                     <h3>{artwork.name}</h3>

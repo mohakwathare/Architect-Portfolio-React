@@ -143,3 +143,10 @@ app.post('/sendEmail', (req, res) => {
 	var result = sendEmailToOwner(req);
 	return res.send(result);
 });
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, 'webapp/build')))
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/webapp/build/index.html'))
+})
