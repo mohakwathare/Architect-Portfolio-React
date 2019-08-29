@@ -17,7 +17,7 @@ const about = props => {
               <div className="col">
                 <LazyLoad>
                 <img src={aboutMeImage} className="imgresponsive" alt="" /> 
-                </LazyLoad>>
+                </LazyLoad>
               </div>
               <div className="col abouttext">
                 {props.aboutMeInfo.split("\n").map((i,key) => 
