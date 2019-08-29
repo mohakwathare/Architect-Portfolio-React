@@ -84,8 +84,8 @@ var sendEmailToOwner = (req) => {
     let transporter = nodemailer.createTransport({
 		service:'gmail',
         auth: {
-            user: "radzarchitalker10@gmail.com", // generated ethereal user
-            pass: "thearchitalker@03" // generated ethereal password
+            user: process.env.EMAIL_GMAIL,
+            pass: process.env.PASS_GMAIL 
         }
     });
 
