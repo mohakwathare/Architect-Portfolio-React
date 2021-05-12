@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "eol": "^0.9.1",
     "express": "^4.16.4",
-    "nodemailer": "^6.3.0",
+    "nodemailer": "^6.4.16",
     "split-lines": "^2.0.0"
   },
   "engines": {
